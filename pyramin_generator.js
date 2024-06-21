@@ -1,21 +1,18 @@
-const character = "#";
-const count = 8;
+const character = "@";
+const count = 20;
 const rows = [];
+let inverted = true;
 
 function padRow(rowNumber, rowCount) {
   return " ".repeat(rowCount - rowNumber) + character.repeat(2 * rowNumber - 1) + " ".repeat(rowCount - rowNumber);
 }
 
-
-let continueLoop = false;
-let done = 0;
-
-while (done !== count) {
-  done++;
-  rows.push(padRow(done, count));
-  if (done === count) {
-    continueLoop = false;
-  } 
+for (let i = 1; i <= count; i++) {
+  if (inverted) {
+    rows.unshift(padRow(i, count));
+  } else {
+    rows.push(padRow(i, count));
+  }
 }
 
 let result = ""
